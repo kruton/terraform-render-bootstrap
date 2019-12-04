@@ -9,7 +9,11 @@ locals {
         etcd_servers      = join(",", formatlist("https://%s:2379", var.etcd_servers))
         cloud_provider    = var.cloud_provider
         pod_cidr          = var.pod_cidr
+        pod_cidr_ipv6     = var.pod_cidr_ipv6
+        pod_cidr_both     = join(",", [var.pod_cidr, var.pod_cidr_ipv6])
         service_cidr      = var.service_cidr
+        service_cidr_ipv6 = var.service_cidr_ipv6
+        service_cidr_both = join(",", [var.service_cidr, var.service_cidr_ipv6])
         trusted_certs_dir = var.trusted_certs_dir
         aggregation_flags = var.enable_aggregation ? indent(4, local.aggregation_flags) : ""
       }
@@ -26,6 +30,8 @@ locals {
         coredns_image          = var.container_images["coredns"]
         control_plane_replicas = max(2, length(var.etcd_servers))
         pod_cidr               = var.pod_cidr
+        pod_cidr_ipv6          = var.pod_cidr_ipv6
+        pod_cidr_both          = join(",", [var.pod_cidr, var.pod_cidr_ipv6])
         cluster_domain_suffix  = var.cluster_domain_suffix
         cluster_dns_service_ip = cidrhost(var.service_cidr, 10)
         trusted_certs_dir      = var.trusted_certs_dir

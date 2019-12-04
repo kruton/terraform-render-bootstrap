@@ -36,9 +36,10 @@ spec:
     - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname${aggregation_flags}
     - --secure-port=6443
     - --service-account-key-file=/etc/kubernetes/secrets/service-account.pub
-    - --service-cluster-ip-range=${service_cidr}
+    - --service-cluster-ip-range=${service_cidr_both}
     - --tls-cert-file=/etc/kubernetes/secrets/apiserver.crt
     - --tls-private-key-file=/etc/kubernetes/secrets/apiserver.key
+    - --feature-gates=IPv6DualStack=true
     env:
     - name: POD_IP
       valueFrom:

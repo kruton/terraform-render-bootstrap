@@ -30,6 +30,7 @@ locals {
         vxlan_enabled                   = var.network_encapsulation == "vxlan" ? true : false
         network_ip_autodetection_method = var.network_ip_autodetection_method
         pod_cidr                        = var.pod_cidr
+        pod_cidr_ipv6                   = var.pod_cidr_ipv6
         enable_reporting                = var.enable_reporting
       }
     )

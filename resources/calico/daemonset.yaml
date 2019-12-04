@@ -97,6 +97,8 @@ spec:
             # Auto-detect the BGP IP address.
             - name: IP
               value: "autodetect"
+            - name: IP6
+              value: "autodetect"
             - name: IP_AUTODETECTION_METHOD
               value: "${network_ip_autodetection_method}"
             # Whether Felix should enable IP-in-IP tunnel
@@ -125,9 +127,9 @@ spec:
             # Set Felix endpoint to host default action to ACCEPT.
             - name: FELIX_DEFAULTENDPOINTTOHOSTACTION
               value: "ACCEPT"
-            # Disable IPV6 on Kubernetes.
+            # Enable IPV6 on Kubernetes.
             - name: FELIX_IPV6SUPPORT
-              value: "false"
+              value: "true"
             # Enable felix info logging.
             - name: FELIX_LOGSEVERITYSCREEN
               value: "info"

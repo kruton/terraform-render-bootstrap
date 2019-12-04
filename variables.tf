@@ -54,6 +54,12 @@ variable "pod_cidr" {
   default     = "10.2.0.0/16"
 }
 
+variable "pod_cidr_ipv6" {
+  type        = string
+  description = "CIDR IP range to assign Kubernetes pods"
+  default     = "fd00::/20"
+}
+
 variable "service_cidr" {
   type    = string
   description = <<EOD
@@ -63,6 +69,11 @@ EOD
   default = "10.3.0.0/24"
 }
 
+variable "service_cidr_ipv6" {
+  type    = string
+  description = "CIDR IPv6 range to assign Kubernetes services."
+  default = "fd00:1000::/112"
+}
 
 variable "container_images" {
   type        = map(string)

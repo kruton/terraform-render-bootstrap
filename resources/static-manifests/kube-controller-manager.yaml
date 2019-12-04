@@ -21,8 +21,8 @@ spec:
     - /hyperkube
     - kube-controller-manager
     - --allocate-node-cidrs=true
-    - --cluster-cidr=${pod_cidr}
-    - --service-cluster-ip-range=${service_cidr}
+    - --cluster-cidr=${pod_cidr_both}
+    - --service-cluster-ip-range=${service_cidr_both}
     - --cloud-provider=${cloud_provider}
     - --cluster-signing-cert-file=/etc/kubernetes/secrets/ca.crt
     - --cluster-signing-key-file=/etc/kubernetes/secrets/ca.key
@@ -31,6 +31,7 @@ spec:
     - --leader-elect=true
     - --root-ca-file=/etc/kubernetes/secrets/ca.crt
     - --service-account-private-key-file=/etc/kubernetes/secrets/service-account.key
+    - --feature-gates=IPv6DualStack=true
     livenessProbe:
       httpGet:
         scheme: HTTPS
